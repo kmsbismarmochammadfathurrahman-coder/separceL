@@ -1,0 +1,356 @@
+:root {
+  --primary: #3d0034;
+  --secondary: #3d0034;
+  --dark: #3d0034;
+  --light: #ffffff;
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+.logo-text {
+  font-weight: 900;
+  background: linear-gradient(90deg, white, white, white, #ff00a2);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s infinite linear;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 300%;
+  }
+}
+
+/* --- ANIMASI GRADASI BERGERAK --- */
+@keyframes meshGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  /* Gradasi warna yang kontras & hidup */
+  background: linear-gradient(-45deg, #3d0034, #b3007d, #b30051, #ed03c6);
+  background-size: 400% 400%;
+  animation: meshGradient 12s ease infinite;
+  color: white;
+}
+
+/* Overlay agar teks tetap tajam di atas gradasi */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 5;
+  padding: 20px;
+}
+
+/* --- NAVIGASI --- */
+nav {
+  position: fixed;
+  top: 35px; /* Memberi ruang untuk promo bar */
+  width: 100%;
+  padding: 15px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: 0.5s;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+nav.scrolled {
+  top: 0;
+  background: rgba(72, 23, 59, 0.95);
+  padding: 10px 8%;
+}
+
+.nav-logo span {
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+/* --- PROMO BAR --- */
+.promo-bar {
+  background: var(--secondary);
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  opacity: 0.9;
+}
+
+.btn-main {
+  background: var(--secondary);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-block;
+  transition: var(--transition);
+  box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3);
+}
+
+.btn-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 107, 0, 0.5);
+}
+
+/* --- SECTION & CARDS --- */
+.section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  border: 1px solid #eee;
+}
+
+.card:hover {
+  transform: translateY(-15px);
+}
+
+.card i {
+  font-size: 3rem;
+  color: var(--secondary);
+  margin-bottom: 20px;
+}
+
+/* --- SOCIAL SECTION --- */
+.social-section {
+  background: var(--dark);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.social-icons {
+  margin: 30px 0;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 2.5rem;
+  margin: 0 15px;
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  color: var(--secondary);
+  transform: scale(1.2);
+}
+
+.wa-float {
+  background: #25d366;
+  color: white;
+  padding: 18px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+  nav {
+    flex-direction: column;
+    padding: 10px;
+    top: 30px;
+  }
+  nav div {
+    margin-top: 10px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- ANIMASI NAVIGASI TAMBAHAN --- */
+
+/* 1. Efek Smooth Scroll (Wajib ada agar tidak loncat kasar) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Animasi Garis Bawah saat Hover di Navbar */
+nav div a {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav div a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--secondary);
+  transition: width 0.3s ease;
+}
+
+nav div a:hover::after {
+  width: 100%;
+}
+
+/* 3. Efek Klik (Feedback saat ditekan) */
+nav div a:active {
+  transform: scale(0.9);
+  transition: 0.1s;
+}
+
+/* 4. Highlight Menu yang Sedang Aktif (Opsional) */
+.nav-active {
+  color: var(--secondary) !important;
+}
+.produk-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+.btn-harga {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff00a2, #4f044f);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-harga:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+  padding: 20px;
+}
+
+.map-box {
+  flex: 1;
+  min-width: 300px; /* Agar responsif di layar kecil */
+}
+
+.info-box {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.info-box h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.wa-float-inline {
+  display: inline-block;
+  background-color: #25d366;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: 0.3s;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.wa-float-inline:hover {
+  background-color: #128c7e;
+  transform: translateY(-3px);
+}
+
+/* Responsif: Jika layar HP, teks jadi rata tengah */
+@media (max-width: 768px) {
+  .info-box {
+    text-align: center;
+  }
+}
